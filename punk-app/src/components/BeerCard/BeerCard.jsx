@@ -1,10 +1,19 @@
-const BeerCard = (props) => {
-  const { name } = props;
-  console.log(name);
+import Card from "../Card";
 
+const BeerCard = ({ beerData }) => {
   return (
     <div>
-      <p>{name}</p>
+      {beerData.map((beer, index) => {
+        console.log("this is user", beer);
+        return (
+          <Card
+            key={beer.name + index}
+            beerName={beer.name}
+            tagline={beer.tagline}
+            firstBrewed={beer.first_brewed}
+          />
+        );
+      })}
     </div>
   );
 };
