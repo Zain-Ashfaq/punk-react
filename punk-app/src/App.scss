@@ -1,0 +1,13 @@
+main {
+  border: 2px solid red;
+  height: 100vh;
+  .test {
+    border: 2px solid blue;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100vw;
+    height: 80vh;
+  }
+}
