@@ -4,6 +4,7 @@ main {
   .test {
     border: 2px solid blue;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 

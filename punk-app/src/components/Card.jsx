@@ -1,9 +1,10 @@
 import "./Card.scss";
 
-const Card = ({ beerName, firstBrewed, tagline }) => {
+const Card = ({ beerName, image_url, firstBrewed, tagline }) => {
   return (
-    <div className=".grid-item">
+    <div>
       <p>{`This is beer name ${beerName}`}</p>
+      <img src={image_url} alt="beer"></img>
       <p>{`Brew date ${firstBrewed}`}</p>
       <p>{tagline}</p>
     </div>
