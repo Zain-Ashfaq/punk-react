@@ -6,7 +6,6 @@ import SearchBar from "./components/SearchBar/SearchBar";
 
 const App = () => {
   const [beers, setBeers] = useState([]);
-  const [requestBeers, setRequestBeers] = useState(true);
 
   const [inputName, setInputName] = useState("");
 
@@ -19,14 +18,10 @@ const App = () => {
 
     // console.log("this is data and name", data[0].name);
   };
-  if (requestBeers === true) {
-    getBeers();
-    setRequestBeers(false);
-  }
 
-  // useEffect(() => {
-  //   getBeers();
-  // }, []);
+  useEffect(() => {
+    getBeers();
+  }, []);
 
   // filter beers based on name
   const handleInput = (event) => {
