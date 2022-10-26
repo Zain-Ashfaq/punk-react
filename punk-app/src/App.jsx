@@ -9,9 +9,16 @@ const App = () => {
 
   const [inputName, setInputName] = useState("");
 
-  const getBeers = async () => {
-    const url = "https://api.punkapi.com/v2/beers?page=3&per_page=10";
+  const getBeers = async (beerName) => {
+    // const url = "https://api.punkapi.com/v2/beers?page=3&per_page=10";
     // const url = `https://api.punkapi.com/v2/beers?beer_name=${inputName}`;
+    let url = "https://api.punkapi.com/v2/beers?page=3&per_page=10";
+    if (inputName === "") {
+      console.log("input is blank");
+    } else {
+      url = `https://api.punkapi.com/v2/beers?beer_name=${beerName}`;
+    }
+
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
@@ -22,6 +29,15 @@ const App = () => {
   useEffect(() => {
     getBeers();
   }, []);
+  useEffect(() => {
+    getBeers(inputName);
+  }, [inputName]);
+  //else{
+  //   useEffect(() => {
+  //     getBeers(beerName);
+  //   }, [inputName]);
+
+  //}
 
   // filter beers based on name
   const handleInput = (event) => {
