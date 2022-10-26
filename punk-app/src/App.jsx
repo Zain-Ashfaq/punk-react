@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 
 import BeerContainer from "./containers/BeerContainer/BeerContainer";
 import SearchBar from "./components/SearchBar/SearchBar";
+import Checkbox from "./containers/CheckboxContainer/Checkbox";
 
 const App = () => {
   const [beers, setBeers] = useState([]);
+  const [classicRangeCheckbox, setClassicRangeCheckbox] = useState();
 
   const [inputName, setInputName] = useState("");
 
@@ -18,6 +20,9 @@ const App = () => {
     } else {
       url = `https://api.punkapi.com/v2/beers?beer_name=${beerName}`;
     }
+    if (classicRangeCheckbox === true) {
+      url += "&brewed_before=01-2010";
+    }
 
     const res = await fetch(url);
     const data = await res.json();
@@ -25,27 +30,27 @@ const App = () => {
 
     // console.log("this is data and name", data[0].name);
   };
-
+  //initial load up to get 10 beers
   useEffect(() => {
     getBeers();
   }, []);
+  // used to search for individual beer
   useEffect(() => {
     getBeers(inputName);
-  }, [inputName]);
-  //else{
-  //   useEffect(() => {
-  //     getBeers(beerName);
-  //   }, [inputName]);
+  }, [inputName, classicRangeCheckbox]);
 
-  //}
-
-  // filter beers based on name
   const handleInput = (event) => {
     const cleanInput = event.target.value.toLowerCase().replace(" ", "_");
 
     setInputName(cleanInput);
   };
+  const handleClassicInput = (event) => {
+    const isTicked = event.target.checked;
+    // console.log("is classic range checkbox ticked? ", isTicked);
+    setClassicRangeCheckbox(isTicked);
+  };
   console.log("this is inputName", inputName);
+  console.log("is classic range checkbox ticked? ", classicRangeCheckbox);
 
   // to get beer name called vice https://api.punkapi.com/v2/beers?beer_name=vice
 
@@ -57,6 +62,7 @@ const App = () => {
         onInput={handleInput}
         value={inputName}
       ></input>
+      <Checkbox onChange={handleClassicInput} />
       <SearchBar />
       <div className="test">
         <BeerContainer beerData={beers} />
