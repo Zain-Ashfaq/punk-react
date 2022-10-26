@@ -7,52 +7,87 @@ import Checkbox from "./containers/CheckboxContainer/Checkbox";
 
 const App = () => {
   const [beers, setBeers] = useState([]);
+  // This checks brew before 2010
   const [classicRangeCheckbox, setClassicRangeCheckbox] = useState();
+  // This checks High Alcohol (ABV value greater than 6%)
+  const [highAlcoholCheckbox, setHighAlcoholCheckbox] = useState();
+
+  const [showAllBeers, setShowAllBeers] = useState();
+  const [phCheckbox, setPhCheckbox] = useState();
 
   const [inputName, setInputName] = useState("");
 
   const getBeers = async (beerName) => {
-    // const url = "https://api.punkapi.com/v2/beers?page=3&per_page=10";
-    // const url = `https://api.punkapi.com/v2/beers?beer_name=${inputName}`;
+    // This is default url
     let url = "https://api.punkapi.com/v2/beers?page=3&per_page=10";
-    if (inputName === "") {
-      console.log("input is blank");
-    } else {
+
+    if (showAllBeers === true) {
+      url = "https://api.punkapi.com/v2/beers?";
+    }
+
+    if (inputName !== "") {
       url = `https://api.punkapi.com/v2/beers?beer_name=${beerName}`;
     }
+
     if (classicRangeCheckbox === true) {
       url += "&brewed_before=01-2010";
+    }
+    if (highAlcoholCheckbox === true) {
+      url += "&abv_gt=6";
+    }
+    if (phCheckbox === true) {
+      url += "&abv_gt=6";
     }
 
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
+    console.log("this is the url for API", url);
 
     // console.log("this is data and name", data[0].name);
   };
+
   //initial load up to get 10 beers
   useEffect(() => {
     getBeers();
   }, []);
-  // used to search for individual beer
+  // used to search for individual beer and change filters
   useEffect(() => {
     getBeers(inputName);
-  }, [inputName, classicRangeCheckbox]);
-
+  }, [inputName, classicRangeCheckbox, highAlcoholCheckbox, showAllBeers]);
   const handleInput = (event) => {
     const cleanInput = event.target.value.toLowerCase().replace(" ", "_");
 
     setInputName(cleanInput);
   };
-  const handleClassicInput = (event) => {
+
+  const handleShowAllBeers = (event) => {
+    const isTicked = event.target.checked;
+
+    setShowAllBeers(isTicked);
+  };
+  const handleClassicCheckbox = (event) => {
     const isTicked = event.target.checked;
     // console.log("is classic range checkbox ticked? ", isTicked);
     setClassicRangeCheckbox(isTicked);
   };
-  console.log("this is inputName", inputName);
-  console.log("is classic range checkbox ticked? ", classicRangeCheckbox);
+  const handleAlcoholCheckbox = (event) => {
+    const isTicked = event.target.checked;
+    // console.log("is classic range checkbox ticked? ", isTicked);
+    setHighAlcoholCheckbox(isTicked);
+  };
+  const handlePhCheckbox = (event) => {
+    const isTicked = event.target.checked;
+    setPhCheckbox(isTicked);
+  };
+  console.log("this is showAllBeers", showAllBeers);
+  // console.log("this is inputName", inputName);
 
   // to get beer name called vice https://api.punkapi.com/v2/beers?beer_name=vice
+
+  // Filter via PH level
+  const filterBeerPh = beers.filter((word) => word.ph <= 4);
+  console.log("this is filtered beer list ", filterBeerPh);
 
   return (
     <main>
@@ -62,11 +97,23 @@ const App = () => {
         onInput={handleInput}
         value={inputName}
       ></input>
-      <Checkbox onChange={handleClassicInput} />
+      <Checkbox
+        onChangeShowAllBeers={handleShowAllBeers}
+        onChangeClassic={handleClassicCheckbox}
+        onChangeAlcohol={handleAlcoholCheckbox}
+        onChangePH={handlePhCheckbox}
+      />
       <SearchBar />
-      <div className="test">
-        <BeerContainer beerData={beers} />
-      </div>
+      {phCheckbox && (
+        <div className="test">
+          <BeerContainer beerData={filterBeerPh} />
+        </div>
+      )}
+      {!phCheckbox && (
+        <div className="test">
+          <BeerContainer beerData={beers} />
+        </div>
+      )}
     </main>
   );
 };
