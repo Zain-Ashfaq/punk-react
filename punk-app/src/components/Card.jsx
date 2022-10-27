@@ -8,10 +8,11 @@ const Card = ({
   abvNumber,
   ph,
   id,
+  beerCardClicked,
 }) => {
+  console.log("this is beer card clicked in Card component", beerCardClicked);
   return (
     <div>
-      {console.log("this is beer id number", id)}
       <p>{`This is beer name ${beerName}`}</p>
       <img src={image_url} alt="beer"></img>
       <p>{`Brew date ${firstBrewed}`}</p>

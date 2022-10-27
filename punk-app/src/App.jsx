@@ -109,11 +109,10 @@ const App = () => {
           <BeerContainer beerData={filterBeerPh} />
         </div>
       )}
-      {!phCheckbox && (
-        <div className="test">
-          <BeerContainer beerData={beers} />
-        </div>
-      )}
+
+      <div className="test">
+        <BeerContainer beerData={beers} />
+      </div>
     </main>
   );
 };
