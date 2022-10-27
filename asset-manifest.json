@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/punk-react/static/css/main.073c9b0a.css",
-    "main.js": "/punk-react/static/js/main.3d9b2ffe.js",
+    "main.css": "/punk-react/static/css/main.65294819.css",
+    "main.js": "/punk-react/static/js/main.b023cfa3.js",
     "static/js/787.11d7d8ae.chunk.js": "/punk-react/static/js/787.11d7d8ae.chunk.js",
-    "static/media/logo.svg": "/punk-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/punk-react/index.html",
-    "main.073c9b0a.css.map": "/punk-react/static/css/main.073c9b0a.css.map",
-    "main.3d9b2ffe.js.map": "/punk-react/static/js/main.3d9b2ffe.js.map",
+    "main.65294819.css.map": "/punk-react/static/css/main.65294819.css.map",
+    "main.b023cfa3.js.map": "/punk-react/static/js/main.b023cfa3.js.map",
     "787.11d7d8ae.chunk.js.map": "/punk-react/static/js/787.11d7d8ae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.3d9b2ffe.js"
+    "static/css/main.65294819.css",
+    "static/js/main.b023cfa3.js"
   ]
 }
