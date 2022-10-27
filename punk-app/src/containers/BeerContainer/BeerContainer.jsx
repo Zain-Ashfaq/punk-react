@@ -1,9 +1,11 @@
 import { useState } from "react";
-import Card from "../../components/Card";
+import Card from "../../components/BeerCard/BeerCard";
+import ShowInfoCard from "../../components/ShowInfoCard/ShowInfoCard";
 import "./BeerContainer.scss";
 
-const BeerCard = ({ beerData }) => {
+const BeerContainer = ({ beerData }) => {
   const [beerCardClicked, setBeerCardClicked] = useState(false);
+  // const [beerObj, setBeerObj] = useState({});
 
   return (
     <>
@@ -12,13 +14,14 @@ const BeerCard = ({ beerData }) => {
 
         const handleCardClick = () => {
           setBeerCardClicked(!beerCardClicked);
-          // console.log(`Beer id ${beer.id} and ${beer.name} has been clicked`);
-          console.log(beerCardClicked);
+          console.log(`Beer id ${beer.id} and ${beer.name} has been clicked`);
         };
+        console.log(beerCardClicked);
+
         return (
           <div className="beercard_container" onClick={handleCardClick}>
             {beerCardClicked ? (
-              <Card beerCardClicked={beerCardClicked} beerName={beer.name} />
+              <ShowInfoCard beer={beer} />
             ) : (
               <Card
                 id={beer.id}
@@ -37,4 +40,4 @@ const BeerCard = ({ beerData }) => {
   );
 };
 
-export default BeerCard;
+export default BeerContainer;

@@ -87,7 +87,7 @@ const App = () => {
 
   // Filter via PH level
   const filterBeerPh = beers.filter((word) => word.ph <= 4);
-  console.log("this is filtered beer list ", filterBeerPh);
+  // console.log("this is filtered beer list ", filterBeerPh);
 
   return (
     <main>

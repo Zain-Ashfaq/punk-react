@@ -1,4 +1,4 @@
-import "./Card.scss";
+import "./BeerCard.scss";
 
 const Card = ({
   beerName,
