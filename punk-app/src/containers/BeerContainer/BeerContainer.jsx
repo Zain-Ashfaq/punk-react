@@ -5,7 +5,7 @@ import "./BeerContainer.scss";
 
 const BeerContainer = ({ beerData }) => {
   const [beerCardClicked, setBeerCardClicked] = useState(false);
-  // const [beerObj, setBeerObj] = useState({});
+  const [beerObj, setBeerObj] = useState();
 
   return (
     <>
@@ -13,15 +13,18 @@ const BeerContainer = ({ beerData }) => {
         // WHEN CLICKED, BEER INFO SHOULD APPEAR ON SCREEN
 
         const handleCardClick = () => {
+          if (beerCardClicked) {
+            setBeerObj(beer.food_pairing);
+          }
           setBeerCardClicked(!beerCardClicked);
-          console.log(`Beer id ${beer.id} and ${beer.name} has been clicked`);
+          // console.log(`Beer id ${beer.id} and ${beer.name} has been clicked`);
         };
-        console.log(beerCardClicked);
+        // console.log(beerObj);
 
         return (
           <div className="beercard_container" onClick={handleCardClick}>
             {beerCardClicked ? (
-              <ShowInfoCard beer={beer} />
+              <ShowInfoCard props={beerData.food_pairing} />
             ) : (
               <Card
                 id={beer.id}

@@ -1,9 +1,8 @@
-const ShowInfoCard = ({ beer }) => {
-  for (let i = 0; i < beer.food_pairing.length; i++) {
-    console.log(beer.food_pairing, i);
-  }
+const ShowInfoCard = (props) => {
+  const { foodPairings } = props;
+  console.log("this is beer info in ShowInfoCard ", foodPairings);
 
-  return <p>{beer.food_pairing}</p>;
+  return <p>test</p>;
 };
 
 export default ShowInfoCard;

@@ -1,0 +1,11 @@
+@use "../../assets/sass/variables" as *;
+
+.checkbox-container {
+  background-color: $background-color;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  label {
+    color: $card-color;
+  }
+}

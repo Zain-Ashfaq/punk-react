@@ -86,31 +86,35 @@ const App = () => {
   // to get beer name called vice https://api.punkapi.com/v2/beers?beer_name=vice
 
   // Filter via PH level
-  const filterBeerPh = beers.filter((word) => word.ph <= 4);
+  const filterBeerPh = beers.filter((word) => word.ph < 4 && word.ph !== null);
   // console.log("this is filtered beer list ", filterBeerPh);
 
   return (
     <main>
-      <h1>BEERS PAGEssss</h1>
-      <input
-        placeholder="search for beer name"
+      <div className="main__header">
+        <h1>Drink Responsibly</h1>
+      </div>
+
+      <SearchBar
+        placeholder="search beer name"
         onInput={handleInput}
         value={inputName}
-      ></input>
+      />
       <Checkbox
         onChangeShowAllBeers={handleShowAllBeers}
         onChangeClassic={handleClassicCheckbox}
         onChangeAlcohol={handleAlcoholCheckbox}
         onChangePH={handlePhCheckbox}
       />
-      <SearchBar />
       {phCheckbox && (
-        <div className="test">
-          <BeerContainer beerData={filterBeerPh} />
-        </div>
+        <>
+          <div className="main__container">
+            <BeerContainer beerData={filterBeerPh} />
+          </div>
+        </>
       )}
 
-      <div className="test">
+      <div className="main__container">
         <BeerContainer beerData={beers} />
       </div>
     </main>

@@ -1,3 +1,5 @@
+import "./Checkbox.scss";
+
 const Checkbox = ({
   onChangeClassic,
   onChangeAlcohol,
@@ -5,22 +7,22 @@ const Checkbox = ({
   onChangePH,
 }) => {
   return (
-    <div>
+    <div className="checkbox-container">
       <label>
         <input type="checkbox" onChange={onChangeClassic}></input>
-        Classic range - brewed before 2010
+        Classic Range
       </label>
       <label>
         <input type="checkbox" onChange={onChangeAlcohol}></input>
-        High Alcohol - ABV value greater than 6%
+        High Alcohol
       </label>
       <label>
         <input type="checkbox" onChange={onChangeShowAllBeers}></input>
-        Show All beers
+        Show All Beers
       </label>
       <label>
         <input type="checkbox" onChange={onChangePH}></input>
-        PH less than 4
+        PH Less Than 4
       </label>
     </div>
   );

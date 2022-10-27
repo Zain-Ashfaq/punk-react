@@ -1,8 +1,20 @@
-.beercard_container {
-  // display: flex;
-  height: auto;
-  width: 200px;
+@use "../../assets/sass/variables" as *;
 
+.beercard_container {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: $card-color;
+  margin: 10px;
+
+  height: 300px;
+  width: 200px;
+  transition: transform 0.2s;
+
   border: 2px solid orange;
+  border-radius: 20px;
+}
+.beercard_container:hover {
+  transform: scale(1.1);
 }

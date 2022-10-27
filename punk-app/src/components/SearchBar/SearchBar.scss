@@ -1,0 +1,27 @@
+@use "../../assets/sass/variables" as *;
+
+.main__searchbox {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  border: 2px solid purple;
+  background-color: $background-color;
+  padding: 20px 0px;
+  ::placeholder {
+    text-align: center;
+    color: black;
+  }
+  input {
+    text-align: center;
+    height: auto;
+    width: 150px;
+    background-color: $card-color;
+    border-radius: 20px;
+    transition-property: width;
+    transition-duration: 1s;
+  }
+  input:focus {
+    width: 50%;
+  }
+}
