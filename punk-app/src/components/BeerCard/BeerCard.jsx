@@ -13,10 +13,14 @@ const Card = ({
   // console.log("this is beer card clicked in Card component", beerCardClicked);
   return (
     <div>
-      <p>{`This is beer name ${beerName}`}</p>
+      <div className="beer-title">
+        <p>{`${beerName}`}</p>
+      </div>
+
       <img src={image_url} alt="beer"></img>
-      <p>{`Brew date ${firstBrewed}`}</p>
-      <p>{tagline}</p>
+      <p className="beer-tagline">{tagline}</p>
+      <p>{`Brewed ${firstBrewed}`}</p>
+
       <p>{`ABV Number: ${abvNumber}`}</p>
       <p>{`PH number ${ph}`}</p>
     </div>

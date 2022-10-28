@@ -92,7 +92,7 @@ const App = () => {
   return (
     <main>
       <div className="main__header">
-        <h1>Drink Responsibly</h1>
+        <h1>Punk API</h1>
       </div>
 
       <SearchBar

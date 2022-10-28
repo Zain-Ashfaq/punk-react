@@ -11,6 +11,11 @@ body {
   main {
     border: 2px solid red;
     height: 100vh;
+    h1 {
+      font-family: $title-page;
+      color: whitesmoke;
+      font-size: 4rem;
+    }
 
     .main__header {
       border: 2px solid green;
