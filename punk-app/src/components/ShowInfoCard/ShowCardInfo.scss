@@ -1,21 +1,21 @@
 @use "../../assets/sass/variables" as *;
-
-.beercard_container {
+.beercard_info {
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
   background-color: $card-color;
   margin: 10px;
 
-  height: 300px;
-  width: 200px;
+  height: 30rem;
+  width: auto;
   transition: transform 0.2s;
 
   border: 2px solid orange;
   border-radius: 20px;
 }
-.beercard_container:hover {
+.beercard_info:hover {
   transform: scale(1.1);
 }
