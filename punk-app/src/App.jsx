@@ -29,14 +29,14 @@ const App = () => {
       url = `https://api.punkapi.com/v2/beers?beer_name=${beerName}`;
     }
 
-    if (classicRangeCheckbox === true) {
+    if (highAlcoholCheckbox) {
+      url += "&abv_gt=6";
+    }
+    if (phCheckbox) {
+      url += "&abv_gt=6";
+    }
+    if (classicRangeCheckbox) {
       url += "&brewed_before=01-2010";
-    }
-    if (highAlcoholCheckbox === true) {
-      url += "&abv_gt=6";
-    }
-    if (phCheckbox === true) {
-      url += "&abv_gt=6";
     }
 
     const res = await fetch(url);
